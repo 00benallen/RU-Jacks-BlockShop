@@ -1,0 +1,5 @@
+<mat-form-field>
+        <input matInput placeholder="Wallet ID or Shop Name" #identifier (change)="onIdentifierChange(identifier.value)">
+</mat-form-field>
+
+<button mat-button (click)="attemptLogin()">Login</button>

@@ -1,0 +1,14 @@
+<h1>Configure your settings!</h1>
+
+<div class="form-container">
+    <mat-form-field>
+        <input matInput placeholder="Etherium Wallet ID" #walletId (keyup)="onWalletIdEnter(walletId.value)"> 
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Shipping Address" #shippingAddress (keyup)="onShippingAddressEnter(shippingAddress.value)"> 
+    </mat-form-field>
+
+    <p *ngIf='submitIncorrectlyPressed' class='red'>Please enter your information fully.</p>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+</div>
