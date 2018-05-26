@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  userServiceUri: 'http://localhost:8080',
-  vendorServiceUri: 'http://localhost:8081'
+  userServiceUri: 'http://rujacksuserservice-env.p2ietcafym.us-east-2.elasticbeanstalk.com',
+  vendorServiceUri: 'http://rujacksvendorservice-env.wnv9mmfbvj.us-east-1.elasticbeanstalk.com'
 };
 
 /*

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, Store } from '../shop-service/store';
 import { ShopService } from '../shop-service/shop.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seller-settings',
@@ -18,7 +19,7 @@ export class SellerSettingsComponent implements OnInit {
 
   private fullStoreName: String
 
-  constructor(private shopService: ShopService) {
+  constructor(private shopService: ShopService, private router: Router) {
     this.store = new Store()
     this.store.products = []
     this.store.posterFiles = []
@@ -127,7 +128,9 @@ export class SellerSettingsComponent implements OnInit {
       this.showStoreInvalidMsg = false
       console.log("Store is valid, ready to go.")
       //Insert next step here
-      this.shopService.registerShop(this.store)
+      this.shopService.registerShop(this.store).then(() => {
+        this.router.navigate(['/seller/main/' + this.store.fullStoreName])
+      })
     } else {
       console.log("Store is invalid, fix.", this.store)
       this.store.products.push(new Product())

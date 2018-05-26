@@ -1,3 +1,5 @@
-<button routerLink='/shopper' class='login-shopper'>Login as a shopper</button>
+<mat-form-field>
+        <input matInput placeholder="Wallet ID or Shop Name" #identifier (change)="onIdentifierChange(identifier.value)">
+</mat-form-field>
 
-<button routerLink='/seller' class='login-seller'>Login as a seller</button>
+<button mat-button (click)="attemptLogin()">Login</button>

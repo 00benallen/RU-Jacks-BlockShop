@@ -11,18 +11,23 @@ import { UserService } from '../user-service/user.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ShopperMainComponent } from '../shopper-main/shopper-main.component';
 import { ShopService } from '../shop-service/shop.service';
+import { SellerMainComponent } from '../seller-main/seller-main.component';
+import { MaterialModule } from '../app/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainPageComponent } from '../main-page/main-page.component'
 
 const appRoutes: Routes = [
 
   { path: '',
-    redirectTo: '/login',
+    redirectTo: '/main',
     pathMatch: 'full'
   },
   { path: 'login', component: LoginComponent },
   { path: 'shopper',
     component: ShopperSettingsComponent },
-  { path: 'shopper/main', component: ShopperMainComponent
-  },
+  { path: 'shopper/main/:walletId', component: ShopperMainComponent},
+  { path: 'seller/main/:shopName', component: SellerMainComponent},
+  { path: 'main', component: MainPageComponent},
   {
     path: 'seller',
     component: SellerSettingsComponent,
@@ -37,14 +42,18 @@ const appRoutes: Routes = [
     ShopperSettingsComponent,
     PageNotFoundComponent,
     LoginComponent,
-    ShopperMainComponent
+    ShopperMainComponent,
+    SellerMainComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,
     ),
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [UserService, ShopService],
   bootstrap: [AppComponent]

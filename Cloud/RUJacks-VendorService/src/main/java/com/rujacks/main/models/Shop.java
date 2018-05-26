@@ -11,5 +11,6 @@ public class Shop {
 	private String storeBannerText;
 	private List<String> posterFiles;
 	private List<Product> products;
+	private String walletId;
 
 }

@@ -32,7 +32,6 @@ export class ShopperSettingsComponent implements OnInit {
   validateWalletId() {
     if(this.walletId.length == 66) {
       this.walletIdReceived = true
-      console.log("Wallet id", this.walletId)
     }
   }
 
@@ -44,7 +43,6 @@ export class ShopperSettingsComponent implements OnInit {
   validateShippingAddress() {
     if(this.shippingAddress.length > 0) {
       this.shippingAddressReceived = true
-      console.log("shippingAddress", this.shippingAddress)
     }
   }
 

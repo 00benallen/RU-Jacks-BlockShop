@@ -1,12 +1,14 @@
 <h1>Configure your settings!</h1>
 
-<p>Enter your Etherium wallet ID (we will keep this secure):</p>
-<input type='text' #walletId (keyup.enter)="onWalletIdEnter(walletId.value)"> 
-<p *ngIf="walletIdReceived" class='checkmark' >✓</p>
+<div class="form-container">
+    <mat-form-field>
+        <input matInput placeholder="Etherium Wallet ID" #walletId (keyup)="onWalletIdEnter(walletId.value)"> 
+    </mat-form-field>
 
-<p>Enter your shipping address (we will delete this at any time):</p>
-<input type='text' #shippingAddress (keyup.enter)="onShippingAddressEnter(shippingAddress.value)"> 
-<p *ngIf="shippingAddressReceived" class='checkmark' >✓</p>
+    <mat-form-field>
+        <input matInput placeholder="Shipping Address" #shippingAddress (keyup)="onShippingAddressEnter(shippingAddress.value)"> 
+    </mat-form-field>
 
-<p *ngIf='submitIncorrectlyPressed' class='red'>Please enter your information fully.</p>
-<button (click)="onSubmit()">Submit</button>
+    <p *ngIf='submitIncorrectlyPressed' class='red'>Please enter your information fully.</p>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+</div>

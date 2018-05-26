@@ -1,0 +1,44 @@
+<h1>Your store!</h1>
+
+<p *ngIf="!storeIsLoading">Full Store Name: {{ store.fullStoreName }}</p>
+
+<p *ngIf="!storeIsLoading">Store banner text: {{ store.storeBannerText }}</p>
+
+<p *ngIf="!storeIsLoading">Etherium Wallet ID: {{ store.walletId }}</p>
+
+<p>Poster number 1:</p>
+<img [src]="firstPosterPic" *ngIf="!storeIsLoading">
+
+<p>Poster number 2:</p>
+<img [src]="secondPosterPic" *ngIf="!storeIsLoading">
+
+<p>Products:</p>
+<div class="table-container" *ngIf="!storeIsLoading">
+  <table >
+    <tr>
+      <th>Product Name</th>
+      <th>Product Picture</th>
+      <th>Price (ETH)</th> 
+      <th>Stock</th>
+      <th>Featured</th>
+    </tr>
+    <tr *ngFor="let product of store.products">
+      <td>
+        <p>{{product.productName}}</p>
+      </td>
+      <td>
+          <img [src]="product.productPicture">
+      </td> 
+      <td>
+        <p>{{product.price}}</p>
+      </td>
+      <td>
+        <p>{{product.stock}}</p>
+      </td>
+      <td>
+          {{product.featured}}
+      </td>
+    </tr>
+  </table>
+</div>
+
