@@ -1,0 +1,11 @@
+p.checkmark {
+    display: inline;
+}
+
+input {
+    display: inline;
+}
+
+.red {
+    color: red;
+}

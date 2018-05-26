@@ -1,0 +1,51 @@
+<h1>Design Your Store!</h1>
+
+<p>This is where you can design a store, which will be searchable in BlockShop for any user.</p>
+
+<p>Enter the name of your store (this will have to be a unique name):</p>
+<input type='text' #fullStoreName (keyup)="onFullStoreNameChange(fullStoreName.value)"> 
+<p *ngIf="fullStoreNameReceived" class='checkmark'>✓</p>
+
+<p>Enter the text for your store banner (can be a short form of the store name. Doesn't have to be unique):</p>
+<input type='text' #storeBannerText (keyup)="onStoreBannerTextChange(storeBannerText.value)">
+<p *ngIf="storeBannerTextReceived" class='checkmark'>✓</p>
+
+<p>Enter Etherium Wallet ID you want associated with this store:</p>
+<input type='text' #storeWalletId (keyup)="onStoreWalletIdChange(storeWalletId.value)">
+<p *ngIf="storeWalletIdReceived" class='checkmark'>✓</p>
+
+<p>Upload 2 poster images you want displayed in your store:</p>
+<input type='file' (change)="onFirstPosterPicChange($event)">
+<input type='file' (change)="onSecondPosterPicChange($event)">
+
+<p>Upload products you want to provide in the store (you can add stock, and new products later):</p>
+<table>
+  <tr>
+    <th>Product Name (must be to unique to THIS STORE only)</th>
+    <th>Product Picture (medium sized JPEG for best results)</th>
+    <th>Price (ETH)</th> 
+    <th>Stock</th>
+    <th>Featured</th>
+  </tr>
+  <tr *ngFor="let product of store.products">
+    <td>
+      <input type='text' #productName (keyup)="onProductNameChange(product, productName.value)">
+    </td>
+    <td>
+        <input type='file' (change)="onProductPicChange(product, $event)">
+    </td> 
+    <td>
+      <input type='text' #price (keyup)="onPriceChange(product, price.value)">
+    </td>
+    <td>
+        <input type='text' #stock (keyup)="onStockChange(product, stock.value)">
+    </td>
+    <td>
+        <input type="checkbox" #featured (change)="onFeaturedChange(product, featured.value)">
+    </td>
+  </tr>
+</table>
+
+<p *ngIf="showStoreInvalidMsg" style="color: red">Store invalid, please fix input.</p>
+<button (click)="onSubmitButtonPressed()">I'm finished!</button>
+
