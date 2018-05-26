@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: benpinhorn
+Build-Jdk: 10
+Implementation-Title: RUJacks-VendorService
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.rujacks
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/RUJacks-VendorService
+Created-By: Maven Integration for Eclipse
+

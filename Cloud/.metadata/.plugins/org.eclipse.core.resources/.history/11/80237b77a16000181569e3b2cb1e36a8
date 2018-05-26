@@ -1,0 +1,9 @@
+package com.rujacks.main.models;
+
+public class User {
+	
+	private String walletId;
+	
+	private String shippingAddress;
+
+}

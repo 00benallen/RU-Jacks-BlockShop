@@ -1,0 +1,20 @@
+package com.rujacks.main.models;
+
+import java.io.File;
+
+import lombok.Data;
+
+@Data
+public class Product {
+	
+	private String productName;
+	
+	private byte[] productPicture;
+	
+	private int price;
+	
+	private int stock;
+	
+	private boolean featured;
+
+}
