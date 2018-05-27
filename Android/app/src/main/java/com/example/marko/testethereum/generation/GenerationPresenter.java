@@ -41,7 +41,7 @@ public class GenerationPresenter implements GenerationContract.Presenter {
                 path.mkdir();
             }
             byte[] sed = MnemonicUtils.generateSeed("lounge episode medal arctic dilemma siren keep myself year achieve major close",password);
-            ECKeyPair keypair = ECKeyPair.create(new BigInteger("22442df9fcd5e5d3b5b049f1e78412b6b6c6d78d9f20fbdeb5d8fa1044544835",16));
+            ECKeyPair keypair = ECKeyPair.create(new BigInteger("2cac5ffa846d91a5b3aa4d83e6b32a1c67ba758657a04e558d47b49710da5533",16));
             //fileName = WalletUtils.generateLightNewWalletFile(password, new File(String.valueOf(path)));
             fileName = WalletUtils.generateWalletFile(password, keypair, new File(String.valueOf(path)), false);
             Log.e("TAG", "generateWallet: " + path+ "/" + fileName);

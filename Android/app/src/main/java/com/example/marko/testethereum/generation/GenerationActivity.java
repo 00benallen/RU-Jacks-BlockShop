@@ -58,6 +58,7 @@ public class GenerationActivity extends AppCompatActivity implements GenerationC
                     intent.putExtra("WalletAddress", mWalletAddress);
                     intent.putExtra("password", mPassword.getText().toString());
                     intent.putExtra("pathtowallet",GenerationPresenter.pathtowall);
+                    //intent.putExtra("Shop",e)
 
                     startActivity(intent);
                 }
