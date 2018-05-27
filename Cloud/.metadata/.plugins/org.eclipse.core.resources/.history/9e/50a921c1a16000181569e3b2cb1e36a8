@@ -1,0 +1,16 @@
+package com.rujacks.main.controllers;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rujacks.main.models.User;
+
+@RestController
+public class UserController {
+	
+	@GetMapping("/{walletId}")
+	public User getUser(final String walletId) {
+		
+	}
+
+}

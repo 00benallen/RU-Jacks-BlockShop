@@ -1,0 +1,13 @@
+package com.rujacks.main.models;
+
+import lombok.Data;
+import org.springframework.data.
+
+@Data
+public class User {
+	
+	private String walletId;
+	
+	private String shippingAddress;
+
+}

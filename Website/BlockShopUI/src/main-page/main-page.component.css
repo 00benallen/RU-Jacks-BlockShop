@@ -1,0 +1,25 @@
+button {
+    margin: 10px;
+    width: 50%;
+    padding: 10px;
+    top: 50%;
+    position: absolute;
+    left: 0%
+}
+
+button.login {
+    left: 25%;
+    top: 60%;
+}
+
+button.signup-seller {
+    left: 50%
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+ 
+}

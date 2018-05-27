@@ -1,0 +1,25 @@
+package com.rujacks.main.controllers;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rujacks.main.data.UserRepository;
+import com.rujacks.main.models.User;
+
+import lombok.AllArgsConstructor;
+
+@RestController
+@AllArgsConstructor
+public class UserController {
+	
+	private final UserRepository repo;
+	
+	@GetMapping("/{walletId}")
+	public ResponseEntity<User> getUser(final String walletId) {
+		
+		return repo.findById(walletId)
+		
+	}
+
+}
