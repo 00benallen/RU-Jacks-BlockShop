@@ -44,7 +44,8 @@ const appRoutes: Routes = [
     LoginComponent,
     ShopperMainComponent,
     SellerMainComponent,
-    MainPageComponent
+    MainPageComponent,
+    ShopperMainComponent
   ],
   imports: [
     BrowserModule,
