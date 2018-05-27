@@ -36,6 +36,7 @@ public class ProductController {
 		if(shopOpt.isPresent()) {
 			
 			shopOpt.get().getProducts().addAll(products);
+			repo.save(shopOpt.get());
 			
 			return ResponseEntity.ok(shopOpt.get());
 			
@@ -86,10 +87,16 @@ public class ProductController {
 		Optional<Shop> shopOpt = repo.findByFullStoreName(shopName);
 		
 		if(shopOpt.isPresent()) {	
-			for(Product product: shopOpt.get().getProducts()) {
+			Shop shop = shopOpt.get();
+			List<Product> products = shop.getProducts();
+			for(Product product: products) {
 				if(product.getProductName().equals(productName)) {
-					shopOpt.get().getProducts().remove(product);
-					shopOpt.get().getProducts().add(newProduct);
+					products.remove(product);
+					products.add(newProduct);
+					
+					shop.setProducts(products);
+					repo.deleteByFullStoreName(shopName);
+					repo.save(shop);
 					return ResponseEntity.noContent().build();
 				}
 			}
@@ -112,6 +119,7 @@ public class ProductController {
 			for(Product product: shopOpt.get().getProducts()) {
 				if(product.getProductName().equals(productName)) {
 					shopOpt.get().getProducts().remove(product);
+					repo.save(shopOpt.get());
 					return ResponseEntity.noContent().build();
 				}
 			}
