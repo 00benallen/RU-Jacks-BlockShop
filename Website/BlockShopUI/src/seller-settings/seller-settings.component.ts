@@ -101,7 +101,7 @@ export class SellerSettingsComponent implements OnInit {
     this.makeNewProductRowIfReady()
   }
 
-  onFeaturedChange(product: Product, featured: Boolean) {
+  onFeaturedChange(product: Product, featured: boolean) {
     product.featured = featured
     this.makeNewProductRowIfReady()
   }

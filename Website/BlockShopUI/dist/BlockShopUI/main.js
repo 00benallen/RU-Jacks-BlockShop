@@ -161,7 +161,8 @@ var AppModule = /** @class */ (function () {
                 _login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"],
                 _shopper_main_shopper_main_component__WEBPACK_IMPORTED_MODULE_10__["ShopperMainComponent"],
                 _seller_main_seller_main_component__WEBPACK_IMPORTED_MODULE_12__["SellerMainComponent"],
-                _main_page_main_page_component__WEBPACK_IMPORTED_MODULE_15__["MainPageComponent"]
+                _main_page_main_page_component__WEBPACK_IMPORTED_MODULE_15__["MainPageComponent"],
+                _shopper_main_shopper_main_component__WEBPACK_IMPORTED_MODULE_10__["ShopperMainComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -364,7 +365,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "button {\n    margin: 10px;\n    width: 50%;\n    padding: 10px;\n    top: 50%;\n    position: absolute;\n    left: 0%\n}\n\nbutton.login {\n    left: 25%;\n    top: 60%;\n}\n\nbutton.signup-seller {\n    left: 50%\n}"
+module.exports = "button {\n    margin: 10px;\n    width: 50%;\n    padding: 10px;\n    top: 50%;\n    position: absolute;\n    left: 0%\n}\n\nbutton.login {\n    left: 25%;\n    top: 60%;\n}\n\nbutton.signup-seller {\n    left: 50%\n}\n\nimg {\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n    width: 50%;\n \n}"
 
 /***/ }),
 
@@ -375,7 +376,7 @@ module.exports = "button {\n    margin: 10px;\n    width: 50%;\n    padding: 10p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button color=\"primary\" routerLink='/shopper' class='signup-shopper'>Signup as a shopper</button>\n\n<button mat-raised-button color=\"primary\" routerLink='/seller' class='signup-seller'>Signup as a seller</button>\n\n<p></p>\n<button mat-raised-button color=\"accent\" routerLink='/login' class='login'>Login</button>"
+module.exports = "<img src=\"../assets/RUJacks-Logo.png\">\n\n<button mat-raised-button color=\"primary\" routerLink='/shopper' class='signup-shopper'>Signup as a shopper</button>\n\n<button mat-raised-button color=\"primary\" routerLink='/seller' class='signup-seller'>Signup as a seller</button>\n\n<p></p>\n<button mat-raised-button color=\"accent\" routerLink='/login' class='login'>Login</button>"
 
 /***/ }),
 
@@ -904,7 +905,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  shopper-main works!\n</p>\n"
+module.exports = "<h1>Shopper Profile</h1>\n\n<p *ngIf=\"!userIsLoading\">WalletId: {{user.walletId}}</p>\n<p *ngIf=\"!userIsLoading\"> Shipping Address: {{user.shippingAddress}}</p>\n\n\n\n"
 
 /***/ }),
 
@@ -919,6 +920,8 @@ module.exports = "<p>\n  shopper-main works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopperMainComponent", function() { return ShopperMainComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _user_service_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user-service/user.service */ "./src/user-service/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -929,10 +932,27 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var ShopperMainComponent = /** @class */ (function () {
-    function ShopperMainComponent() {
+    function ShopperMainComponent(userService, route, changeDetector) {
+        this.userService = userService;
+        this.route = route;
+        this.changeDetector = changeDetector;
     }
     ShopperMainComponent.prototype.ngOnInit = function () {
+        this.getShopFromService();
+    };
+    ShopperMainComponent.prototype.getShopFromService = function () {
+        var _this = this;
+        var walletId = this.route.snapshot.paramMap.get('walletId');
+        this.userIsLoading = true;
+        this.userService.getUser(walletId).then(function (user) {
+            _this.user = user;
+            _this.userIsLoading = false;
+            _this.changeDetector.detectChanges();
+            console.log(_this.user);
+        });
     };
     ShopperMainComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -940,7 +960,9 @@ var ShopperMainComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./shopper-main.component.html */ "./src/shopper-main/shopper-main.component.html"),
             styles: [__webpack_require__(/*! ./shopper-main.component.css */ "./src/shopper-main/shopper-main.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_user_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
     ], ShopperMainComponent);
     return ShopperMainComponent;
 }());
@@ -967,7 +989,7 @@ module.exports = ".form-container {\n    display: flex;\n    flex-direction: col
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Configure your settings!</h1>\n\n<div class=\"form-container\">\n    <mat-form-field>\n        <input matInput placeholder=\"Etherium Wallet ID\" #walletId (keyup)=\"onWalletIdEnter(walletId.value)\"> \n    </mat-form-field>\n\n    <mat-form-field>\n        <input matInput placeholder=\"Shipping Address\" #shippingAddress (keyup)=\"onShippingAddressEnter(shippingAddress.value)\"> \n    </mat-form-field>\n\n    <p *ngIf='submitIncorrectlyPressed' class='red'>Please enter your information fully.</p>\n    <button mat-raised-button color=\"primary\" (click)=\"onSubmit()\">Submit</button>\n</div>"
+module.exports = "<h1>Create a shopper account!</h1>\n\n<div class=\"form-container\">\n    <mat-form-field>\n        <input matInput placeholder=\"Etherium Wallet ID\" #walletId (keyup)=\"onWalletIdEnter(walletId.value)\"> \n    </mat-form-field>\n\n    <mat-form-field>\n        <input matInput placeholder=\"Shipping Address\" #shippingAddress (keyup)=\"onShippingAddressEnter(shippingAddress.value)\"> \n    </mat-form-field>\n\n    <p *ngIf='submitIncorrectlyPressed' class='red'>Please enter your information fully.</p>\n    <button mat-raised-button color=\"primary\" (click)=\"onSubmit()\">Submit</button>\n</div>"
 
 /***/ }),
 
@@ -1001,6 +1023,8 @@ var ShopperSettingsComponent = /** @class */ (function () {
         this.userService = userService;
         this.router = router;
         this.walletIdReceived = false;
+        this.walletId = "";
+        this.shippingAddress = "";
     }
     ShopperSettingsComponent.prototype.ngOnInit = function () {
     };
@@ -1010,6 +1034,7 @@ var ShopperSettingsComponent = /** @class */ (function () {
     };
     ShopperSettingsComponent.prototype.validateWalletId = function () {
         if (this.walletId.length == 66) {
+            console.log("Wallet ID is valid.");
             this.walletIdReceived = true;
         }
     };
@@ -1019,6 +1044,7 @@ var ShopperSettingsComponent = /** @class */ (function () {
     };
     ShopperSettingsComponent.prototype.validateShippingAddress = function () {
         if (this.shippingAddress.length > 0) {
+            console.log("Shipping address is valid.");
             this.shippingAddressReceived = true;
         }
     };
@@ -1033,7 +1059,7 @@ var ShopperSettingsComponent = /** @class */ (function () {
                 walletId: this.walletId,
                 shippingAddress: this.shippingAddress
             }).then(function () {
-                _this.router.navigate(['/shopper/main']);
+                _this.router.navigate(['/shopper/main/' + _this.walletId]);
             });
         }
     };

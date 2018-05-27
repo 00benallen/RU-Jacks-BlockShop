@@ -19,6 +19,8 @@ export class ShopperSettingsComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { 
     this.walletIdReceived = false
+    this.walletId = ""
+    this.shippingAddress = ""
   }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class ShopperSettingsComponent implements OnInit {
 
   validateWalletId() {
     if(this.walletId.length == 66) {
+      console.log("Wallet ID is valid.")
       this.walletIdReceived = true
     }
   }
@@ -42,6 +45,7 @@ export class ShopperSettingsComponent implements OnInit {
 
   validateShippingAddress() {
     if(this.shippingAddress.length > 0) {
+      console.log("Shipping address is valid.")
       this.shippingAddressReceived = true
     }
   }
@@ -58,11 +62,9 @@ export class ShopperSettingsComponent implements OnInit {
         walletId: this.walletId,
         shippingAddress: this.shippingAddress
       }).then(() => {
-        this.router.navigate(['/shopper/main'])
+        this.router.navigate(['/shopper/main/' + this.walletId])
       })
 
     }
   }
-  
-
 }

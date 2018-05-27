@@ -1,3 +1,7 @@
-<p>
-  shopper-main works!
-</p>
+<h1>Shopper Profile</h1>
+
+<p *ngIf="!userIsLoading">WalletId: {{user.walletId}}</p>
+<p *ngIf="!userIsLoading"> Shipping Address: {{user.shippingAddress}}</p>
+
+
+

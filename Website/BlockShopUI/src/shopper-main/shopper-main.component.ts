@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { User } from '../user-service/user';
+import { UserService } from '../user-service/user.service';
+import { ActivatedRoute } from '@angular/router';
+import { ShopService } from '../shop-service/shop.service';
 
 @Component({
   selector: 'app-shopper-main',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopperMainComponent implements OnInit {
 
-  constructor() { }
+  private user: User
+  private userIsLoading: boolean
+
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
+              private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.getShopFromService()
+  }
+
+  getShopFromService() {
+    const walletId = this.route.snapshot.paramMap.get('walletId');
+    this.userIsLoading = true
+    this.userService.getUser(walletId).then((user) => {
+      this.user = user
+      this.userIsLoading = false
+      this.changeDetector.detectChanges()
+      console.log(this.user)
+    })
   }
 
 }
