@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TestEthereum.iml" filepath="$PROJECT_DIR$/TestEthereum.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ethereum-android-sample-master.iml" filepath="$PROJECT_DIR$/ethereum-android-sample-master.iml" />
     </modules>
   </component>
 </project>
