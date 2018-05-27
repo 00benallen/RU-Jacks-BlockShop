@@ -330,7 +330,7 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.attemptLogin = function () {
         var _this = this;
-        if (this.identifier.length == 66) {
+        if (this.identifier.length == 42) {
             console.log("Etherium Wallet ID Detected.");
             this.userService.getUser(this.identifier).then(function (user) {
                 _this.router.navigate(['shopper/main/' + _this.identifier]);
@@ -690,7 +690,7 @@ var SellerSettingsComponent = /** @class */ (function () {
         }
     };
     SellerSettingsComponent.prototype.onStoreWalletIdChange = function (storeWalletId) {
-        if (storeWalletId.length == 66) {
+        if (storeWalletId.length == 42) {
             this.store.walletId = storeWalletId;
             this.storeWalletIdReceived = true;
         }
@@ -770,7 +770,7 @@ var SellerSettingsComponent = /** @class */ (function () {
             && store.products.length >= 1
             && store.storeBannerText.length >= 8
             && this.validateProducts()
-            && store.walletId.length == 66;
+            && store.walletId.length == 42;
     };
     SellerSettingsComponent.prototype.validateProducts = function () {
         var allValid = true;
@@ -1033,7 +1033,7 @@ var ShopperSettingsComponent = /** @class */ (function () {
         this.validateWalletId();
     };
     ShopperSettingsComponent.prototype.validateWalletId = function () {
-        if (this.walletId.length == 66) {
+        if (this.walletId.length == 42) {
             console.log("Wallet ID is valid.");
             this.walletIdReceived = true;
         }

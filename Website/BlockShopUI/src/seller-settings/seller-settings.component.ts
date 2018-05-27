@@ -55,7 +55,7 @@ export class SellerSettingsComponent implements OnInit {
   }
 
   onStoreWalletIdChange(storeWalletId: String) {
-    if(storeWalletId.length == 66) {
+    if(storeWalletId.length == 42) {
       this.store.walletId = storeWalletId
       this.storeWalletIdReceived = true
     } else {
@@ -101,11 +101,6 @@ export class SellerSettingsComponent implements OnInit {
     this.makeNewProductRowIfReady()
   }
 
-  onFeaturedChange(product: Product, featured: boolean) {
-    product.featured = featured
-    this.makeNewProductRowIfReady()
-  }
-
   makeNewProductRowIfReady() {
     let allValid = this.validateProducts()
 
@@ -146,7 +141,7 @@ export class SellerSettingsComponent implements OnInit {
         && store.products.length >= 1
         && store.storeBannerText.length >= 8
         && this.validateProducts()
-        && store.walletId.length == 66
+        && store.walletId.length == 42
     
   }
 

@@ -20,7 +20,6 @@
       <th>Product Picture</th>
       <th>Price (ETH)</th> 
       <th>Stock</th>
-      <th>Featured</th>
     </tr>
     <tr *ngFor="let product of store.products">
       <td>
@@ -34,9 +33,6 @@
       </td>
       <td>
         <p>{{product.stock}}</p>
-      </td>
-      <td>
-          {{product.featured}}
       </td>
     </tr>
   </table>

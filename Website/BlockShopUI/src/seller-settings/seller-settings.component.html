@@ -31,7 +31,6 @@
         <th>Product Picture (medium sized JPEG for best results)</th>
         <th>Price (ETH)</th> 
         <th>Stock</th>
-        <th>Featured</th>
       </tr>
       <tr *ngFor="let product of store.products">
         <td>
@@ -45,9 +44,6 @@
         </td>
         <td>
             <input type='text' #stock (keyup)="onStockChange(product, stock.value)">
-        </td>
-        <td>
-            <input type="checkbox" #featured (change)="onFeaturedChange(product, featured.value)">
         </td>
       </tr>
     </table>

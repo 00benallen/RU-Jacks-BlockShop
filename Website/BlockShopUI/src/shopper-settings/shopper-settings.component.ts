@@ -32,7 +32,7 @@ export class ShopperSettingsComponent implements OnInit {
   }
 
   validateWalletId() {
-    if(this.walletId.length == 66) {
+    if(this.walletId.length == 42) {
       console.log("Wallet ID is valid.")
       this.walletIdReceived = true
     }

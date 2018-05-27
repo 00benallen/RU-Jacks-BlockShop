@@ -11,5 +11,4 @@ export class Store {
     productPicture: String //base64
     price: number
     stock: number
-    featured: boolean
 }

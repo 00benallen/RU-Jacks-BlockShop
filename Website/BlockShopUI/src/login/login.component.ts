@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   attemptLogin() {
-    if(this.identifier.length == 66) {
+    if(this.identifier.length == 42) {
       console.log("Etherium Wallet ID Detected.")
       this.userService.getUser(this.identifier).then((user) => {
         this.router.navigate(['shopper/main/' + this.identifier])
